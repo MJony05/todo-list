@@ -6,7 +6,8 @@ let a = 0;
 let row = 0;
 let list = document.querySelector(".list");
 
-btn.addEventListener("click", function () {
+btn.addEventListener("click", function (e) {
+  e.preventDefault();
   a = input.value;
   row = `<div class="todo">
   <p class="todo_text">${a}</p>
@@ -17,11 +18,10 @@ btn.addEventListener("click", function () {
   input.value = "";
 });
 
-for (let el of btn__del) {
-  el.addEventListener("click", function (e) {
-    if (e.target.classList.contains("todo__btn")) {
-      e.target.parentElement.remove();
-      console.log(btn__del);
-    }
-  });
-}
+list.addEventListener("click", function (e) {
+  console.log(e.target);
+  if (e.target.classList.contains("todo__btn")) {
+    e.target.parentElement.remove();
+    console.log(btn__del);
+  }
+});
